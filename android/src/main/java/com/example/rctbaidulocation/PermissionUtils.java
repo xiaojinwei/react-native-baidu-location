@@ -6,8 +6,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
-import com.facebook.react.modules.core.PermissionAwareActivity;
-import com.facebook.react.modules.core.PermissionListener;
+//import com.facebook.react.modules.core.PermissionAwareActivity;
+//import com.facebook.react.modules.core.PermissionListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +97,7 @@ public final class PermissionUtils {
     private static String[] getDeniedPermissions(final Context context, final String[] permissions) {
         List<String> deniedPermissions = new ArrayList<>();
         for (String permission : permissions) {
-            if (android.support.v4.content.ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_DENIED) {
+            if (androidx.core.content.ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_DENIED) {
                 deniedPermissions.add(permission);
             }
         }
@@ -123,7 +123,7 @@ public final class PermissionUtils {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return false;
         boolean rationale;
         for (String permission : deniedPermissions) {
-            rationale = android.support.v4.app.ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, permission);
+            rationale = androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, permission);
             if (rationale) return true;
         }
         return false;
@@ -136,7 +136,7 @@ public final class PermissionUtils {
      * @param listener
      */
 
-    public static void permissionsCheck(final Activity activity, String[] requiredPermissions,final OnPermissionListener listener) {
+    /*public static void permissionsCheck(final Activity activity, String[] requiredPermissions,final OnPermissionListener listener) {
         final String[] missingPermissions = getDeniedPermissions(activity, requiredPermissions);
         if (missingPermissions.length > 0) {
             ((PermissionAwareActivity) activity).requestPermissions(missingPermissions, 1, new PermissionListener() {
@@ -172,6 +172,6 @@ public final class PermissionUtils {
             listener.onPermissionGranted();
         }
 
-    }
+    }*/
 
 }

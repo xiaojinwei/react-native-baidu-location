@@ -1,7 +1,6 @@
 package com.example.rctbaidulocation;
 
 import android.app.Application;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.baidu.location.BDLocation;
@@ -27,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 
 import android.Manifest;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by user on 16/9/8.
